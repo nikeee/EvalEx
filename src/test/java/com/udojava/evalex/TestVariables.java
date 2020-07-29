@@ -84,7 +84,7 @@ public class TestVariables {
 						.eval().toString());		
 	}
 
-	@Test(expected = Expression.ExpressionException.class)
+	@Test(expected = ExpressionException.class)
 	public void failsIfVariableDoesNotExist() throws Exception {
 		new Expression("3*unknown").eval();
 	}

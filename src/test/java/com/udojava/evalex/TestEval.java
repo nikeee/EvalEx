@@ -1,8 +1,6 @@
 package com.udojava.evalex;
 
-import com.udojava.evalex.Expression.ExpressionException;
 import org.junit.Test;
-import org.junit.experimental.categories.Categories.ExcludeCategory;
 
 import java.math.BigDecimal;
 import java.math.MathContext;

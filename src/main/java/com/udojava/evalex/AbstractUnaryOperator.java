@@ -28,7 +28,6 @@ package com.udojava.evalex;
 
 import java.math.BigDecimal;
 
-import com.udojava.evalex.Expression.ExpressionException;
 import com.udojava.evalex.Expression.LazyNumber;
 
 /**

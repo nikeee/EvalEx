@@ -12,7 +12,7 @@ public class TestVariableCharacters {
 		try {
 			Expression expression = new Expression("a.b/2*PI+MIN(e,b)");
 			expression.eval();
-		} catch (Expression.ExpressionException e) {
+		} catch (ExpressionException e) {
 			err = e.getMessage();
 		}
 		assertEquals("Unknown operator . at character position 2", err);
@@ -26,7 +26,7 @@ public class TestVariableCharacters {
 		try {
 			expression = new Expression("a.b/2*PI+MIN(e,b)").setVariableCharacters("_");
 			expression.eval();
-		} catch (Expression.ExpressionException e) {
+		} catch (ExpressionException e) {
 			err = e.getMessage();
 		}
 		assertEquals("Unknown operator . at character position 2", err);
@@ -34,7 +34,7 @@ public class TestVariableCharacters {
 		try {
 			expression = new Expression("a.b/2*PI+MIN(e,b)").setVariableCharacters("_.");
 			expression.eval();
-		} catch (Expression.ExpressionException e) {
+		} catch (ExpressionException e) {
 			err = e.getMessage();
 		}
 		assertEquals("Unknown operator or function: a.b", err);
@@ -45,7 +45,7 @@ public class TestVariableCharacters {
 		try {
 			expression = new Expression(".a.b/2*PI+MIN(e,b)").setVariableCharacters("_.");
 			expression.eval();
-		} catch (Expression.ExpressionException e) {
+		} catch (ExpressionException e) {
 			err = e.getMessage();
 		}
 		assertEquals("Unknown unary operator . at character position 1", err);

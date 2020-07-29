@@ -7,9 +7,6 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.udojava.evalex.Expression.ExpressionException;
-import com.udojava.evalex.Expression.Function;
-
 public class TestVarArgs {
 
 	@Test
