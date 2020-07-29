@@ -26,7 +26,7 @@
  */
 package com.udojava.evalex;
 
-import com.udojava.evalex.Expression.LazyNumber;
+import com.udojava.evalex.ExpressionLanguage.LazyNumber;
 import java.math.BigDecimal;
 import java.util.List;
 

@@ -26,7 +26,7 @@
  */
 package com.udojava.evalex;
 
-import com.udojava.evalex.Expression.LazyNumber;
+import com.udojava.evalex.ExpressionLanguage.LazyNumber;
 
 /**
  * Base interface which is required for all operators.
@@ -71,5 +71,5 @@ public interface LazyOperator {
 	 *            Operand 2.
 	 * @return The result of the operation.
 	 */
-	public abstract LazyNumber eval(LazyNumber v1, LazyNumber v2);
+	public abstract LazyNumber eval(LazyNumber v1, LazyNumber v2, EvaluationSettings evaluationSettings);
 }

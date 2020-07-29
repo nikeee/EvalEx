@@ -28,7 +28,7 @@ package com.udojava.evalex;
 
 import java.util.List;
 
-import com.udojava.evalex.Expression.LazyNumber;
+import com.udojava.evalex.ExpressionLanguage.LazyNumber;
 
 /**
  * Base interface which is required for lazily evaluated functions. A function
@@ -81,5 +81,5 @@ public interface LazyFunction {
 	 *            The accepted parameters.
 	 * @return The lazy result of this function.
 	 */
-	public abstract LazyNumber lazyEval(List<LazyNumber> lazyParams);
+	public abstract LazyNumber lazyEval(List<LazyNumber> lazyParams, EvaluationSettings evaluationSettings);
 }

@@ -43,5 +43,5 @@ public interface Function extends LazyFunction {
 	 * @return The function must return a new {@link BigDecimal} value as a
 	 *         computing result.
 	 */
-	public abstract BigDecimal eval(List<BigDecimal> parameters);
+	public abstract BigDecimal eval(List<BigDecimal> parameters, EvaluationSettings evaluationSettings);
 }

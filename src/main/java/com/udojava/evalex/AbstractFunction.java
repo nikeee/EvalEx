@@ -30,7 +30,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.udojava.evalex.Expression.LazyNumber;
+import com.udojava.evalex.ExpressionLanguage.LazyNumber;
 
 /**
  * Abstract implementation of a direct function.<br>
@@ -68,17 +68,17 @@ public abstract class AbstractFunction extends AbstractLazyFunction implements F
 		super(name, numParams, booleanFunction);
 	}
 
-	public LazyNumber lazyEval(final List<LazyNumber> lazyParams) {
+	public LazyNumber lazyEval(final List<LazyNumber> lazyParams, final EvaluationSettings evaluationSettings) {
 		return new LazyNumber() {
 
 			private List<BigDecimal> params;
 
 			public BigDecimal eval() {
-				return AbstractFunction.this.eval(getParams());
+				return AbstractFunction.this.eval(getParams(), evaluationSettings);
 			}
 
 			public String getString() {
-				return String.valueOf(AbstractFunction.this.eval(getParams()));
+				return String.valueOf(AbstractFunction.this.eval(getParams(), evaluationSettings));
 			}
 
 			private List<BigDecimal> getParams() {
