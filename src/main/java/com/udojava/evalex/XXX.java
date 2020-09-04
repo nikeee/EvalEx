@@ -11,12 +11,14 @@ public class XXX {
   private final ExpressionSettings expressionSettings;
   private final List<ExpressionLanguage.Token> parsedExpression;
 
+
   XXX(ExpressionLanguage language, String originalExpression, ExpressionSettings expressionSettings, List<ExpressionLanguage.Token> parsedExpression) {
     this.language = language;
     this.originalExpression = originalExpression;
     this.expressionSettings = expressionSettings;
     this.parsedExpression = parsedExpression;
   }
+
 
   @Override
   public String toString() {
@@ -30,10 +32,11 @@ public class XXX {
    * @return The result of the expression.
    */
   public BigDecimal eval(final EvaluationSettings settings) {
-    return eval(settings, new HashMap<String, Number>());
+    return eval(settings, new HashMap<String, BigDecimal>());
   }
 
-  public BigDecimal eval(final EvaluationSettings settings, final Map<String, Number> variableScope) {
+
+  public BigDecimal eval(final EvaluationSettings settings, final Map<String, BigDecimal> variableScope) {
 
     Deque<ExpressionLanguage.LazyNumber> stack = new ArrayDeque<ExpressionLanguage.LazyNumber>();
 
@@ -45,6 +48,7 @@ public class XXX {
             public BigDecimal eval() {
               return language.operators.get(token.surface).eval(value, null, settings).eval();
             }
+
 
             @Override
             public String getString() {
@@ -61,6 +65,7 @@ public class XXX {
             public BigDecimal eval() {
               return language.operators.get(token.surface).eval(v2, v1, settings).eval();
             }
+
 
             public String getString() {
               return String.valueOf(language.operators.get(token.surface).eval(v2, v1, settings).eval());
@@ -85,6 +90,7 @@ public class XXX {
 
               return new BigDecimal(variable.toString(), settings.getMathContext());
             }
+
 
             public String getString() {
               return token.surface;
@@ -121,6 +127,7 @@ public class XXX {
               return new BigDecimal(token.surface, settings.getMathContext());
             }
 
+
             public String getString() {
               return String.valueOf(new BigDecimal(token.surface, settings.getMathContext()));
             }
@@ -132,6 +139,7 @@ public class XXX {
               return null;
             }
 
+
             public String getString() {
               return token.surface;
             }
@@ -142,6 +150,7 @@ public class XXX {
             public BigDecimal eval() {
               return new BigDecimal(new BigInteger(token.surface.substring(2), 16), settings.getMathContext());
             }
+
 
             public String getString() {
               return new BigInteger(token.surface.substring(2), 16).toString();
@@ -192,27 +201,4 @@ public class XXX {
     }
     return false;
   }
-
-}
-
-class EvaluationSettings {
-  private final MathContext mathContext;
-  private final boolean stripTrailingZeros;
-
-  /**
-   * @param mathContext
-   * @param stripTrailingZeros If set to <code>true</code> trailing zeros in the result are stripped.
-   */
-  public EvaluationSettings(MathContext mathContext, boolean stripTrailingZeros) {
-    this.mathContext = mathContext;
-    this.stripTrailingZeros = stripTrailingZeros;
   }
-
-  public MathContext getMathContext() {
-    return mathContext;
-  }
-
-  public boolean getStripTrailingZeros() {
-    return stripTrailingZeros;
-  }
-}

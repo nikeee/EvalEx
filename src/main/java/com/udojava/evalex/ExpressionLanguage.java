@@ -137,11 +137,6 @@ public class ExpressionLanguage {
     private String varChars = "_";
 
     /**
-     * The cached RPN (Reverse Polish Notation) of the expression.
-     */
-    private List<Token> rpn = null;
-
-    /**
      * All defined operators with name and implementation.
      */
     protected Map<String, LazyOperator> operators = new TreeMap<String, LazyOperator>(            String.CASE_INSENSITIVE_ORDER);
@@ -1408,10 +1403,8 @@ public class ExpressionLanguage {
      * @return The cached RPN instance.
      */
     private List<Token> getRPN(String expressionString) {
-        if (rpn == null) {
-            rpn = shuntingYard(expressionString);
-            validate(rpn);
-        }
+        List<Token> rpn = shuntingYard(expressionString);
+        validate(rpn);
         return rpn;
     }
 
